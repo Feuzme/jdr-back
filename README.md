@@ -2,4 +2,4 @@
 ## Description 
 Back end code with SPRING for a rpg character sheet creation application
 ## Launch Projet
-With eclipse update maven project the launc hauspring application
+With eclipse update maven project the launch as spring application
