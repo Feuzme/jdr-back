@@ -1,5 +1,11 @@
 package fr.jdr.spring.models;
 
-public class Game {
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Data;
+
+@Data
+@Document
+public class Game {
+	
 }

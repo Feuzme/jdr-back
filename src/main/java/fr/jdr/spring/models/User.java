@@ -1,5 +1,5 @@
 package fr.jdr.spring.models;
 
-public class FicheModele {
+public class User {
 
 }
