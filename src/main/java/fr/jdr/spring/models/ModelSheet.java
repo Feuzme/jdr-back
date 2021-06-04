@@ -16,6 +16,6 @@ public class ModelSheet {
 	private User user;
 	private Boolean isPublic;
 	@DBRef
-	private GameName gameName;
+	private GameType gameName;
 		
 }
