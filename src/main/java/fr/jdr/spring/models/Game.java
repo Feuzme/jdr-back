@@ -9,8 +9,6 @@ import lombok.Data;
 @Data
 @Document
 public class Game {
-
-	
 	@Id
 	private String id;
 	
