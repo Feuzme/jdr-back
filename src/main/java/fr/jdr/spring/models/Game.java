@@ -14,7 +14,7 @@ public class Game {
 	
 	private String nom;
 	
-	private int nb_joueur;
+	private Integer nb_joueur;
 	
 	private String trame;
 	

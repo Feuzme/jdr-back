@@ -18,7 +18,7 @@ public class Creneau {
 	
 	private LocalDateTime date_Fin;
 	
-	private int frequence;
+	private Integer frequence;
 	
 	private boolean prochaine_Session;
 	
