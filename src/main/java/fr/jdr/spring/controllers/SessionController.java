@@ -1,5 +1,5 @@
 package fr.jdr.spring.controllers;
 
-public class TestControllers {
+public class SessionController {
 
 }

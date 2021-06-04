@@ -1,5 +1,5 @@
 package fr.jdr.spring.services.servicesimpl;
 
-public class TestServiceImpl {
+public class SessionServiceImpl {
 
 }

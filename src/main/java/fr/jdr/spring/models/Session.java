@@ -1,5 +1,5 @@
 package fr.jdr.spring.models;
 
-public class TestModels {
+public class Session {
 
 }

@@ -1,5 +1,5 @@
 package fr.jdr.spring.services;
 
-public interface TestService {
+public interface GenericService {
 
 }
