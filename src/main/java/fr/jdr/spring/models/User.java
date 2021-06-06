@@ -10,7 +10,7 @@ import lombok.Data;
 public class User {
 	
 	@Id
-	private Long id;
+	private String id;
 	
 	private String nom;
 	private String email;
@@ -19,5 +19,13 @@ public class User {
 	private String bio;
 	private String ville;
 	
+	private boolean loggedIn;
+	
 
+	public enum Status {
+	    SUCCESS,
+	    USER_ALREADY_EXISTS,
+	    FAILURE
+	}
+	
 }

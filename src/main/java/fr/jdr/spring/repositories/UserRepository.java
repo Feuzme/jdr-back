@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import fr.jdr.spring.models.User;
 
-public interface UserRepository  extends MongoRepository<User, Long> {
+public interface UserRepository  extends MongoRepository<User, String> {
 
 	
 	public List<User> findByNom(String nom);

@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getById(Long id) {
+	public User getById(String id) {
 		// TODO Auto-generated method stub
 		return userRepository.findById(id).get();
 	}
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
 		this.userRepository.deleteById(id);
 	}
