@@ -12,8 +12,8 @@ public class GameSheet {
 	@Id
 	private String id;
 	private ModelSheet sheet;
-	private String orginalCharacterInfos;
-	private String characterInfos;
+	private Object orginalCharacterInfos;
+	private Object characterInfos;
 	@DBRef
 	private User user; 
 	
