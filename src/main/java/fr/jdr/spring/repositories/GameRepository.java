@@ -1,5 +1,9 @@
 package fr.jdr.spring.repositories;
 
-public interface GameRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import fr.jdr.spring.models.Game;
+
+public interface GameRepository extends MongoRepository<Game, String> {
 
 }

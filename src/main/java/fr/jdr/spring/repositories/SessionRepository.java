@@ -1,5 +1,9 @@
 package fr.jdr.spring.repositories;
 
-public interface SessionRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import fr.jdr.spring.models.Session;
+
+public interface SessionRepository extends MongoRepository<Session, String> {
 
 }
