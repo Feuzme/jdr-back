@@ -32,7 +32,7 @@ public class ServiceConfig {
 	}
 	
 	@Bean
-	public GenericService<User> UserServiceFactory() {
+	public UserService UserServiceFactory() {
 		return new UserServiceImpl();
 	}
 
