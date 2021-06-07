@@ -2,15 +2,18 @@ package fr.jdr.spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import fr.jdr.spring.services.UserService;
 import fr.jdr.spring.services.servicesimpl.UserServiceImpl;
 import fr.jdr.spring.models.ComposantEdit;
 import fr.jdr.spring.models.ComposantStandard;
 import fr.jdr.spring.models.User;
+import fr.jdr.spring.models.Creneau;
+import fr.jdr.spring.models.Game;
+import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GenericService;
 import fr.jdr.spring.services.servicesimpl.ComposantEditImpl;
 import fr.jdr.spring.services.servicesimpl.ComposantStandardImpl;
-
 
 @Configuration
 public class ServiceConfig {
@@ -29,5 +32,20 @@ public class ServiceConfig {
 	public GenericService<User> UserServiceFactory() {
 //		return new UserServiceImpl();
 		
+	}
+
+	@Bean
+	public GenericService<Creneau> creneauServiceFactory(){
+		return new CreneauServiceImpl();
+	}
+	
+	@Bean
+	public GenericService<Game> gameServiceFactory(){
+		return new GameServiceImpl();
+	}
+	
+	@Bean
+	public GenericService<Session> sessionServiceFactory(){
+		return new SessionServiceImpl();
 	}
 }

@@ -15,7 +15,7 @@ public class Session {
 	@DBRef
 	private Game game;
 	
-	private int episode_num;
+	private Integer episode_num;
 	
 	private String resume;
 	
