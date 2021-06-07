@@ -81,7 +81,7 @@ public class UserController {
     
 	@DeleteMapping("{id}")
 	public Status delete(@PathVariable String id) {
-		this.userService.delete(id);
+		this.userService.deleteById(id);
 		 return Status.SUCCESS;
 		
 	}

@@ -27,7 +27,6 @@ public class ServiceConfig {
 	
 	@Bean
 	public GenericService<User> UserServiceFactory() {
-//		return new UserServiceImpl();
-		
+		return new UserServiceImpl();
 	}
 }

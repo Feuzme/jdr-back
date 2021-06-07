@@ -50,9 +50,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void deleteById(String id) {
 		// TODO Auto-generated method stub
 		this.userRepository.deleteById(id);
+	}
+	
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+		this.userRepository.delete(user);
 	}
 	
 
