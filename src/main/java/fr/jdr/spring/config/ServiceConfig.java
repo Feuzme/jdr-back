@@ -14,6 +14,9 @@ import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GenericService;
 import fr.jdr.spring.services.servicesimpl.ComposantEditImpl;
 import fr.jdr.spring.services.servicesimpl.ComposantStandardImpl;
+import fr.jdr.spring.services.servicesimpl.CreneauServiceImpl;
+import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
+import fr.jdr.spring.services.servicesimpl.SessionServiceImpl;
 
 @Configuration
 public class ServiceConfig {
