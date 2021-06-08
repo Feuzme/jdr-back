@@ -3,18 +3,24 @@ package fr.jdr.spring.services.servicesimpl;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.bson.internal.Base64;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.jdr.spring.dto.ConnexionDTO;
 import fr.jdr.spring.dto.CreationUserDTO;
-import fr.jdr.spring.dto.ModificationUserPasswordDTO;
+import fr.jdr.spring.dto.ModificationPasswordDTO;
+import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.services.UserService;
+
+
+
 
 
 
@@ -73,9 +79,6 @@ public class UserServiceImpl implements UserService {
 	
 	
 	
-	
-	
-	
 	@Override
 	public void supprimerUser(String id) {
 		if(this.userRepository.existsById(id))
@@ -84,21 +87,68 @@ public class UserServiceImpl implements UserService {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 	}
 
+/**
+ * methode pour modifier le username et le password
+ */
+	@Override
+	public UserDTO modificationUsername(ModificationUsernameDTO dto) {
+		User user = this.userRepository.findById(dto.getId())
+				.orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+		if(dto.getNom()!=null)
+			user.setNom(dto.getNom());
+		if(dto.getEmail() != null)
+			user.setEmail(dto.getEmail());
+		User result = this.userRepository.save(user);
+		return this.mapper.convertValue(result, UserDTO.class);
+	}
+	
+	@Override
+	public UserDTO modificationPassword(ModificationPasswordDTO dto) {
+		User user = this.userRepository.findById(dto.getId())
+				.orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+		if(dto.getPassword()!=null)
+			user.setPassword(dto.getPassword());
+
+		User result = this.userRepository.save(user);
+		return this.mapper.convertValue(result, UserDTO.class);
+	}
+	
+
 
 
 	@Override
 	public String connexion(ConnexionDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+		// Trouver l'utilisateur en fonction de l'username ou email
+		Optional<User> optional = this.userRepository.findFirstByNomOrEmail(dto.getUsernameOrEmail(), dto.getUsernameOrEmail());
+		User user = optional.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		//verification du password
+		if (user.getPassword().equals(Base64.encode(dto.getPassword().getBytes())))
+			//retourner l'id
+			return user.getId();
+		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
 
 
 
-	@Override
-	public UserDTO modificationUsernamePassword(ModificationUserPasswordDTO dto) {
-		// TODO Auto-generated method stub
-		return null;
+
+
+	
+	
+	
+/*
+ * 
+ * 	@Override
+	public String connexion(ConnexionDTO dto) {
+		// Trouver l'utilisateur en fonction de l'username ou email
+		Optional<User> optional = this.userRepository.findFirstByUsernameOrEmail(dto.getUsernameOrEmail(), dto.getUsernameOrEmail());
+		User utilisateur = optional.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		if (utilisateur.getPassword().equals(Base64.encode(dto.getPassword().getBytes())))
+			return utilisateur.getId();
+		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
+
+*/
+
 
 	
 	

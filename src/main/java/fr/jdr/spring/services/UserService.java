@@ -4,7 +4,8 @@ import java.util.List;
 
 import fr.jdr.spring.dto.ConnexionDTO;
 import fr.jdr.spring.dto.CreationUserDTO;
-import fr.jdr.spring.dto.ModificationUserPasswordDTO;
+import fr.jdr.spring.dto.ModificationPasswordDTO;
+import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
@@ -18,16 +19,11 @@ public interface UserService  {
 	*/
 	
 	public UserDTO creationNouveauUtilisateur(CreationUserDTO dto);
-
 	public SimpleUserDTO findById(String id);
-
 	public List<SimpleUserDTO> trouverToutLesUtilisateurs();
-
-
 	public void supprimerUser(String id);
-
+	public UserDTO modificationUsername(ModificationUsernameDTO dto);
+	public UserDTO modificationPassword(ModificationPasswordDTO dto);
 	public String connexion(ConnexionDTO dto);
-
-	public UserDTO modificationUsernamePassword(ModificationUserPasswordDTO dto);
 	
 }

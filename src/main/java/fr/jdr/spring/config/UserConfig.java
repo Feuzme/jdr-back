@@ -23,8 +23,8 @@ public class UserConfig {
 		return new UserServiceImpl(repository, mapper);
 	}
 	
-	/*
-	@Bean */
+	
+	@Bean 
 	public ObjectMapper objectMapper() {
 
 		ObjectMapper mapper = new ObjectMapper();

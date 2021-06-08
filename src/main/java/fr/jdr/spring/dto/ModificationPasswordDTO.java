@@ -5,10 +5,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ModificationUsernameDTO {
+public class ModificationPasswordDTO {
 
 	
 	private String id;
-	private String nom;
+	private String username;
 	private String email;
+	private String password;
 }

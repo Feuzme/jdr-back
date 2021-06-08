@@ -14,12 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.jdr.spring.dto.ConnexionDTO;
 import fr.jdr.spring.dto.CreationUserDTO;
+import fr.jdr.spring.dto.ModificationPasswordDTO;
+import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.models.User.Status;
 import fr.jdr.spring.services.UserService;
+
+
 
 @RestController
 @RequestMapping("users")
@@ -44,6 +49,27 @@ public class UserController {
 	@GetMapping("")
 	public List<SimpleUserDTO> findAll(){
 		return this.userService.trouverToutLesUtilisateurs();
+	}
+	
+	@DeleteMapping("{id}")
+	public void supprimerParId(@PathVariable String id) {
+		this.userService.supprimerUser(id);
+	}
+	
+	
+	@PatchMapping("")
+	public UserDTO modificationUserame(@RequestBody ModificationUsernameDTO dto) {
+		return this.userService.modificationUsername(dto);
+	}
+	
+	@PatchMapping("reset")
+	public UserDTO modificationPassword(@RequestBody ModificationPasswordDTO dto) {
+		return this.userService.modificationPassword(dto);
+	}
+	
+	@PostMapping("connexion")
+	public String connexion(@RequestBody ConnexionDTO dto) {
+		return this.userService.connexion(dto);
 	}
 	
 	
