@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.dto.sheet.GameSheetDto;
+import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
 import fr.jdr.spring.services.GameSheetService;
 
 @CrossOrigin
@@ -20,7 +20,7 @@ public class GameSheetController {
 	private GameSheetService service;
 	
 	@GetMapping("")
-	public List<GameSheetDto> findAll() {
+	public List<GameSheetCreationDto> findAll() {
 		return this.service.getAll();
 	}
 }

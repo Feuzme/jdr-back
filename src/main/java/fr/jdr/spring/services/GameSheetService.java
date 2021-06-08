@@ -2,16 +2,39 @@ package fr.jdr.spring.services;
 
 import java.util.List;
 
-import fr.jdr.spring.dto.sheet.GameSheetDto;
+import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
+import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
 
 public interface GameSheetService {
-	public List<GameSheetDto> getAll();
+	/**
+	 * retourne la liste de toutes le gamesheet sous forme de GameSheetDto
+	 */
+	public List<GameSheetCreationDto> getAll();
 	
-	public GameSheetDto getById(String id);
+	/**
+	 * Retourne un GameSheetDto correspondant à l'id recherché
+	 * @param id
+	 * @return
+	 */
+	public GameSheetCreationDto getById(String id);
 	
-	public GameSheetDto create(GameSheetDto entity);
+	/**
+	 * permet mettre une GameSheet en base
+	 * @param dto
+	 * @return
+	 */
+	public GameSheetCreationDto create(GameSheetCreationDto dto);
 	
-	public GameSheetDto update(GameSheetDto entity);
+	/**
+	 * permet de mettre à jour les infos personnage d'une GameSheet
+	 * @param dto
+	 * @return
+	 */
+	public GameSheetCreationDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto);
 	
+	/**
+	 * supprime une fiche via son ID
+	 * @param id
+	 */
 	public void deleteById(String id);
 }

@@ -8,65 +8,103 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fr.jdr.spring.dto.sheet.GameSheetDto;
+import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
+import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
 import fr.jdr.spring.models.GameSheet;
 import fr.jdr.spring.repositories.GameSheetRepository;
 import fr.jdr.spring.services.GameSheetService;
 
 public class GameSheetServiceImpl implements GameSheetService {
-	
+
 	private GameSheetRepository repository;
 	private ObjectMapper mapper;
-	
+
+	/**
+	 * Constructeur pour initialiser le mapper et le repo en utilisant les bean
+	 * 
+	 * @param repo
+	 * @param mapper
+	 */
 	public GameSheetServiceImpl(GameSheetRepository repo, ObjectMapper mapper) {
 		this.mapper = mapper;
 		this.repository = repo;
 	}
-	
+
 	@Override
-	public List<GameSheetDto> getAll() {	
+	public List<GameSheetCreationDto> getAll() {
 		List<GameSheet> gameSheets = this.repository.findAll();
-		
+		// converti chaque element de la list en GameSheetDto gra^ce à stream().map()
 		return gameSheets.stream().map(gameSheet -> {
-			return this.mapper.convertValue(gameSheet, GameSheetDto.class);
+			return this.mapper.convertValue(gameSheet, GameSheetCreationDto.class);
 		}).collect(Collectors.toList());
-	}	
+	}
 
 	@Override
-	public GameSheetDto getById(String id) {
+	public GameSheetCreationDto getById(String id) {
+		// cherche dans la bdd sinon renvoie 404
 		GameSheet gamesheet = this.repository.findById(id)
-				.orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
-		
-		return this.mapper.convertValue(gamesheet, GameSheetDto.class);
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+		// retourne la gamesheet trouvée en la convertissant en GameSheetDto
+		return this.mapper.convertValue(gamesheet, GameSheetCreationDto.class);
 	}
 
 	@Override
-	public GameSheetDto create(GameSheetDto entity) {
-		GameSheet gameSheet = this.mapper.convertValue(entity, GameSheet.class);
-		
-		gameSheet.setCharacterInfos(entity.getCharacInfos());
-		gameSheet.setOrginalCharacterInfos(entity.getCharacInfos());
-		gameSheet.setSheet(entity.getModel());
-		gameSheet.setUser(entity.getUser());
-		
+	public GameSheetCreationDto create(GameSheetCreationDto dto) {
+		GameSheet gameSheet = this.mapper.convertValue(dto, GameSheet.class);
+
+		checkSheetCreation(dto);
+
+		// A la creation les infos perso sont = aux infos d'origine
+		gameSheet.setCharacterInfos(gameSheet.getOrginalCharacterInfos());
+
+		gameSheet.setOrginalCharacterInfos(dto.getOriginCharacInfos());
+		gameSheet.setSheet(dto.getModel());
+		gameSheet.setUser(dto.getUser());
+
 		GameSheet result = this.repository.save(gameSheet);
-				
-		return this.mapper.convertValue(result, GameSheetDto.class);
+
+		// retourne le resultat et le converti en dto pour l'envoie au client
+		return this.mapper.convertValue(result, GameSheetCreationDto.class);
 	}
+
+	/**
+	 * verifie que toues les infos sont là pour la création de fiche
+	 * 
+	 * @param dto
+	 */
+	private void checkSheetCreation(GameSheetCreationDto dto) {
+		if (dto.getModel() == null || dto.getUser() == null || dto.getOriginCharacInfos() == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+
+	}
+
+	@Override
+	public GameSheetCreationDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto) {
+		// recupère l'objet en BDD
+		GameSheet entity = this.repository.findById(dto.getId())
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+		//met à jour le champ CharacInfos s'il est bien renseigné
+		if (dto.getCharacInfo() != null)
+			entity.setCharacterInfos(dto.getCharacInfo());
+
+		//save en bdd
+		GameSheet result = this.repository.save(entity);
+
+		//retourne le resultat en le convertissant
+		return this.mapper.convertValue(result, GameSheetCreationDto.class);
+	}
+
 	
-
 	@Override
-	public GameSheetDto update(GameSheetDto entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteById(String id) {
+		//verifie existe puis delete
+		if (this.repository.existsById(id))
+			this.repository.deleteById(id);
+		else
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
 	}
-
-	@Override
-	public void delete(GameSheetDto entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
 }
