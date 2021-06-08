@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
+import fr.jdr.spring.dto.sheet.GameSheetDto;
 import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
 import fr.jdr.spring.models.GameSheet;
 import fr.jdr.spring.repositories.GameSheetRepository;
@@ -40,20 +41,20 @@ public class GameSheetServiceImpl implements GameSheetService {
 	}
 
 	@Override
-	public GameSheetCreationDto getById(String id) {
+	public GameSheetDto getById(String id) {
 		// cherche dans la bdd sinon renvoie 404
 		GameSheet gamesheet = this.repository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
 		// retourne la gamesheet trouvée en la convertissant en GameSheetDto
-		return this.mapper.convertValue(gamesheet, GameSheetCreationDto.class);
+		return this.mapper.convertValue(gamesheet, GameSheetDto.class);
 	}
 
 	@Override
 	public GameSheetCreationDto create(GameSheetCreationDto dto) {
-		GameSheet gameSheet = this.mapper.convertValue(dto, GameSheet.class);
-
 		checkSheetCreation(dto);
+		
+		GameSheet gameSheet = this.mapper.convertValue(dto, GameSheet.class);		
 
 		// A la creation les infos perso sont = aux infos d'origine
 		gameSheet.setCharacterInfos(gameSheet.getOrginalCharacterInfos());
@@ -69,7 +70,7 @@ public class GameSheetServiceImpl implements GameSheetService {
 	}
 
 	/**
-	 * verifie que toues les infos sont là pour la création de fiche
+	 * verifie que toues les infos sont là pour la création de GameSheet
 	 * 
 	 * @param dto
 	 */
@@ -81,7 +82,7 @@ public class GameSheetServiceImpl implements GameSheetService {
 	}
 
 	@Override
-	public GameSheetCreationDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto) {
+	public GameSheetDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto) {
 		// recupère l'objet en BDD
 		GameSheet entity = this.repository.findById(dto.getId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -94,7 +95,7 @@ public class GameSheetServiceImpl implements GameSheetService {
 		GameSheet result = this.repository.save(entity);
 
 		//retourne le resultat en le convertissant
-		return this.mapper.convertValue(result, GameSheetCreationDto.class);
+		return this.mapper.convertValue(result, GameSheetDto.class);
 	}
 
 	
@@ -105,6 +106,5 @@ public class GameSheetServiceImpl implements GameSheetService {
 			this.repository.deleteById(id);
 		else
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
 	}
 }

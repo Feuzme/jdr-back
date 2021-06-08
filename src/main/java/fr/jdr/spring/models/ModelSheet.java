@@ -1,5 +1,7 @@
 package fr.jdr.spring.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,6 +18,8 @@ public class ModelSheet {
 	private User user;
 	private Boolean isPublic;
 	@DBRef
-	private GameType gameName;
+	private GameType gameType;
+	@DBRef
+	private List<ComposantEdit> composants;
 		
 }

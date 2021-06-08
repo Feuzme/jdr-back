@@ -16,16 +16,19 @@ import fr.jdr.spring.models.ComposantEdit;
 import fr.jdr.spring.models.ComposantStandard;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.repositories.GameSheetRepository;
+import fr.jdr.spring.repositories.ModelSheetRepo;
 import fr.jdr.spring.models.Creneau;
 import fr.jdr.spring.models.Game;
 import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
+import fr.jdr.spring.services.ModelSheetService;
 import fr.jdr.spring.services.servicesimpl.ComposantEditImpl;
 import fr.jdr.spring.services.servicesimpl.ComposantStandardImpl;
 import fr.jdr.spring.services.servicesimpl.CreneauServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameSheetServiceImpl;
+import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
 import fr.jdr.spring.services.servicesimpl.SessionServiceImpl;
 
 @Configuration
@@ -64,6 +67,11 @@ public class ServiceConfig {
 	@Bean
 	public GameSheetService gameSheetServiceFactory(GameSheetRepository repo, ObjectMapper mapper) {
 		return new GameSheetServiceImpl(repo, mapper);
+	}
+	
+	@Bean
+	public ModelSheetService modelSheetServiceFactory(ModelSheetRepo repo, ObjectMapper mapper) {
+		return new ModelSheetServiceImpl(repo, mapper);
 	}
 	
 	@Bean
