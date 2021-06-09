@@ -16,5 +16,5 @@ public class ModelSheetDto {
 	private User user;
 	private Boolean isPublic;
 	private GameType gameType;
-	private List<ComposantEdit> composants;
+	private List<ComposantEdit> composants; //recupérer les dto de Najib/!\
 }
