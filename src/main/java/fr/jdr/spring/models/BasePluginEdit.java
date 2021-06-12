@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Document
 @NoArgsConstructor
-public class ComposantEdit {
+public class BasePluginEdit {
 
 	@Id
 	@Getter @Setter
@@ -21,13 +21,13 @@ public class ComposantEdit {
 	
 	@DBRef
 	@Getter @Setter
-	private ComposantStandard composantStandard;
+	private BasePlugin composantStandard;
 	
 	@DBRef
 	@Getter @Setter
 	private User user;
 	
-	public ComposantEdit(String nom, ComposantStandard composantStandard, User user) {
+	public BasePluginEdit(String nom, BasePlugin composantStandard, User user) {
 		super();
 		this.nom = nom;
 		this.composantStandard = composantStandard;

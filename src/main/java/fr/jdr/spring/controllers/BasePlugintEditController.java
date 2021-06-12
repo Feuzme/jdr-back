@@ -12,38 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.ComposantEdit;
+import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.services.GenericService;
 
 @RestController
 @RequestMapping("edit_composants")
-public class ComposantEditController {
+public class BasePlugintEditController {
 	
 	@Autowired
-	private GenericService<ComposantEdit> composantEditService;
+	private GenericService<BasePluginEdit> basePluginEditService;
 	
 	@GetMapping()
-	public List<ComposantEdit> getAll() {
-		return this.composantEditService.getAll();
+	public List<BasePluginEdit> getAll() {
+		return this.basePluginEditService.getAll();
 	}
 	
 	@PostMapping()
-	public ComposantEdit create(@RequestBody ComposantEdit cinema) {
-		return this.composantEditService.create(cinema);
+	public BasePluginEdit create(@RequestBody BasePluginEdit entity) {
+		return this.basePluginEditService.create(entity);
 	}
 	
 	@GetMapping("{id}")
-	public ComposantEdit getById(@PathVariable String id) {
-		return this.composantEditService.getById(id);
+	public BasePluginEdit getById(@PathVariable String id) {
+		return this.basePluginEditService.getById(id);
 	}
 	
 	@PutMapping()
-	public ComposantEdit update(@RequestBody ComposantEdit cinema) {
-		return this.composantEditService.update(cinema);
+	public BasePluginEdit update(@RequestBody BasePluginEdit entity) {
+		return this.basePluginEditService.update(entity);
 	}
 
 	@DeleteMapping()
-	public void delete(@RequestBody ComposantEdit cinema) {
-		this.composantEditService.delete(cinema);
+	public void delete(@RequestBody BasePluginEdit entity) {
+		this.basePluginEditService.delete(entity);
 	}
 }
