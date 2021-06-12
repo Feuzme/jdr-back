@@ -17,7 +17,7 @@ import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.services.GenericService;
 
 @RestController
-@RequestMapping("standard_composants")
+@RequestMapping("base_plugins")
 @CrossOrigin
 public class BasePluginController {
 
