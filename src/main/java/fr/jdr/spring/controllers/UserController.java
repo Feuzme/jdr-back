@@ -22,9 +22,9 @@ import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.models.User.Status;
+import fr.jdr.spring.services.ModificationUserService;
+import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
-
-
 
 @RestController
 @RequestMapping("users")
@@ -35,42 +35,52 @@ public class UserController {
 	private UserService userService;
 
 	
-	@PostMapping("")
-	public UserDTO creationUser(@RequestBody CreationUserDTO dto) {
-		return this.userService.creationNouveauUtilisateur(dto);
-	}
-
+	@Autowired
+	private SimpleUserService simpleUtilisateurService;
 	
-	@GetMapping("{id}")
-	public SimpleUserDTO findById(@PathVariable String id) {
+	@Autowired
+	private ModificationUserService modificationService;
+	
+	
+	
+	
+	
+	
+	@PostMapping("")
+	public UserDTO creationNouveauUtilisateur(@RequestBody CreationUserDTO dto) {
+		return this.modificationService.creationNouveauUtilisateur(dto);
+	}
+	
+	@GetMapping("{id}/detail")
+	public User findByIdDetail(@PathVariable String id) {
 		return this.userService.findById(id);
 	}
 	
+	@GetMapping("{id}")
+	public SimpleUserDTO findById(@PathVariable String id) {
+		return this.simpleUtilisateurService.findSimpleUtilisateurById(id);
+	}
+	
+	
+	
 	@GetMapping("")
 	public List<SimpleUserDTO> findAll(){
-		return this.userService.trouverToutLesUtilisateurs();
+		return this.simpleUtilisateurService.trouverToutLesUtilisateurs();
 	}
 	
 	@DeleteMapping("{id}")
 	public void supprimerParId(@PathVariable String id) {
-		this.userService.supprimerUser(id);
+		this.userService.deleteById(id);
 	}
-	
 	
 	@PatchMapping("")
-	public UserDTO modificationUserame(@RequestBody ModificationUsernameDTO dto) {
-		return this.userService.modificationUsername(dto);
+	public UserDTO modificationUserNamePassword(ModificationUsernameDTO dto) {
+		return this.modificationService.modificationUsernamePassword(dto);
 	}
 	
-	@PatchMapping("reset")
-	public UserDTO modificationPassword(@RequestBody ModificationPasswordDTO dto) {
-		return this.userService.modificationPassword(dto);
-	}
 	
-	@PostMapping("connexion")
-	public String connexion(@RequestBody ConnexionDTO dto) {
-		return this.userService.connexion(dto);
-	}
+}
+
 	
 	
 	/*
@@ -160,4 +170,4 @@ public class UserController {
 	
 	
 
-}
+

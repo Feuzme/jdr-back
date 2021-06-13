@@ -9,7 +9,7 @@ import fr.jdr.spring.models.User;
 public interface UserRepository  extends MongoRepository<User, String> {
 
 	
-	public Optional<User> findFirstByNomOrEmail(String username, String email);
+	public Optional<User> findFirstByNomOrEmail(String nom, String email);
 	
 
 	

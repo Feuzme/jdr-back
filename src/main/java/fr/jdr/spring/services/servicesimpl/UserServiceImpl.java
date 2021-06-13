@@ -25,8 +25,17 @@ import fr.jdr.spring.services.UserService;
 
 
 
-public class UserServiceImpl implements UserService {
 
+public class UserServiceImpl extends GenericCRUDServiceImpl<User> implements UserService {
+
+	
+	public UserServiceImpl(UserRepository repository, ObjectMapper mapperParam) {
+		super(repository);
+	}
+	
+
+	/*
+	
 	private ObjectMapper mapper;
 	private UserRepository userRepository ;
 
@@ -90,7 +99,7 @@ public class UserServiceImpl implements UserService {
 /**
  * methode pour modifier le username et le password
  */
-	@Override
+	/*@Override
 	public UserDTO modificationUsername(ModificationUsernameDTO dto) {
 		User user = this.userRepository.findById(dto.getId())
 				.orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -102,6 +111,9 @@ public class UserServiceImpl implements UserService {
 		return this.mapper.convertValue(result, UserDTO.class);
 	}
 	
+	
+	*/
+	/*
 	@Override
 	public UserDTO modificationPassword(ModificationPasswordDTO dto) {
 		User user = this.userRepository.findById(dto.getId())
@@ -135,9 +147,8 @@ public class UserServiceImpl implements UserService {
 	
 	
 	
-/*
- * 
- * 	@Override
+
+	@Override
 	public String connexion(ConnexionDTO dto) {
 		// Trouver l'utilisateur en fonction de l'username ou email
 		Optional<User> optional = this.userRepository.findFirstByUsernameOrEmail(dto.getUsernameOrEmail(), dto.getUsernameOrEmail());
@@ -147,13 +158,6 @@ public class UserServiceImpl implements UserService {
 		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
 
-*/
-
-
-	
-	
-	
-	/*
 	
 	@Override
 	public UserDTO modificationUsernamePassword(ModificationUserPasswordDTO dto) {
@@ -178,7 +182,9 @@ public class UserServiceImpl implements UserService {
 			return user.getId();
 		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
-*/
+
+	
+	*/
 
 	
 	
