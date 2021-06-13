@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Document
 @NoArgsConstructor
-public class ComposantStandard {
+public class BasePlugin {
 
 	@Id
 	@Getter @Setter
@@ -18,9 +18,13 @@ public class ComposantStandard {
 	@Getter @Setter
 	private String nom;
 	
-	public ComposantStandard(String nom) {
+	@Getter @Setter
+	private Object config;
+	
+	public BasePlugin(String nom, Object config) {
 		super();
 		this.nom = nom;
+		this.config = config;
 	}
 	
 }

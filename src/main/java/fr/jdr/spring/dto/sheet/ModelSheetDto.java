@@ -2,7 +2,7 @@ package fr.jdr.spring.dto.sheet;
 
 import java.util.List;
 
-import fr.jdr.spring.models.ComposantEdit;
+import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.GameType;
 import fr.jdr.spring.models.User;
 import lombok.Data;
@@ -16,5 +16,5 @@ public class ModelSheetDto {
 	private User user;
 	private Boolean isPublic;
 	private GameType gameType;
-	private List<ComposantEdit> composants; //recupérer les dto de Najib/!\
+	private List<BasePluginEdit> composants; //recupérer les dto de Najib/!\
 }
