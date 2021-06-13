@@ -36,7 +36,7 @@ public class UserController {
 
 	
 	@Autowired
-	private SimpleUserService simpleUtilisateurService;
+	private SimpleUserService simpleUserService;
 	
 	@Autowired
 	private ModificationUserService modificationService;
@@ -51,6 +51,7 @@ public class UserController {
 		return this.modificationService.creationNouveauUtilisateur(dto);
 	}
 	
+
 	@GetMapping("{id}/detail")
 	public User findByIdDetail(@PathVariable String id) {
 		return this.userService.findById(id);
@@ -58,20 +59,20 @@ public class UserController {
 	
 	@GetMapping("{id}")
 	public SimpleUserDTO findById(@PathVariable String id) {
-		return this.simpleUtilisateurService.findSimpleUtilisateurById(id);
+		return this.simpleUserService.findSimpleUtilisateurById(id);
 	}
-	
-	
 	
 	@GetMapping("")
 	public List<SimpleUserDTO> findAll(){
-		return this.simpleUtilisateurService.trouverToutLesUtilisateurs();
+		return this.simpleUserService.trouverToutLesUtilisateurs();
 	}
+	
 	
 	@DeleteMapping("{id}")
 	public void supprimerParId(@PathVariable String id) {
 		this.userService.deleteById(id);
 	}
+	
 	
 	@PatchMapping("")
 	public UserDTO modificationUserNamePassword(ModificationUsernameDTO dto) {

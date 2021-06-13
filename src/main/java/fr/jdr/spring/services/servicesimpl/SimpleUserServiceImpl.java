@@ -3,6 +3,7 @@ package fr.jdr.spring.services.servicesimpl;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.jdr.spring.dto.SimpleUserDTO;
@@ -12,13 +13,13 @@ import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
 
 
-public class SimpleUtilisateurServiceImpl implements SimpleUserService{
+public class SimpleUserServiceImpl implements SimpleUserService{
 
 	private ObjectMapper mapper;
 	private UserRepository repository;
 	private UserService userService;
 
-	public SimpleUtilisateurServiceImpl(ObjectMapper mapper, UserRepository repository) {
+	public SimpleUserServiceImpl(ObjectMapper mapper, UserRepository repository) {
 		super();
 		this.mapper = mapper;
 		this.repository = repository;

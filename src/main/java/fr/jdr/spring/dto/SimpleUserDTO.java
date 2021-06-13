@@ -9,5 +9,6 @@ public class SimpleUserDTO {
 	
 	private String id;
 	private String nom;
+	private String email;
 
 }
