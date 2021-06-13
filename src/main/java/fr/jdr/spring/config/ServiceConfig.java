@@ -15,9 +15,12 @@ import fr.jdr.spring.services.servicesimpl.UserServiceImpl;
 import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.repositories.GameSheetRepository;
-import fr.jdr.spring.repositories.ModelSheetRepo;
+import fr.jdr.spring.repositories.ModelSheetRepository;
 import fr.jdr.spring.models.Creneau;
 import fr.jdr.spring.models.Game;
+import fr.jdr.spring.models.GameSheet;
+import fr.jdr.spring.models.GameType;
+import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
@@ -27,6 +30,7 @@ import fr.jdr.spring.services.servicesimpl.BasePluginImpl;
 import fr.jdr.spring.services.servicesimpl.CreneauServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameSheetServiceImpl;
+import fr.jdr.spring.services.servicesimpl.GameTypeServiceImpl;
 import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
 import fr.jdr.spring.services.servicesimpl.SessionServiceImpl;
 
@@ -64,13 +68,18 @@ public class ServiceConfig {
 	}
 	
 	@Bean
-	public GameSheetService gameSheetServiceFactory(GameSheetRepository repo, ObjectMapper mapper) {
-		return new GameSheetServiceImpl(repo, mapper);
+	public GenericService<GameSheet> gameSheetServiceFactory() {
+		return new GameSheetServiceImpl();
 	}
 	
 	@Bean
-	public ModelSheetService modelSheetServiceFactory(ModelSheetRepo repo, ObjectMapper mapper) {
-		return new ModelSheetServiceImpl(repo, mapper);
+	public GenericService<ModelSheet> modelSheetServiceFactory() {
+		return new ModelSheetServiceImpl();
+	}
+	
+	@Bean
+	public GenericService<GameType> gameTypefactory() {
+		return new GameTypeServiceImpl();
 	}
 	
 	@Bean

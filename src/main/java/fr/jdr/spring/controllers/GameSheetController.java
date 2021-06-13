@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
 import fr.jdr.spring.dto.sheet.GameSheetDto;
 import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
+import fr.jdr.spring.models.GameSheet;
 import fr.jdr.spring.services.GameSheetService;
+import fr.jdr.spring.services.GenericService;
 
 @CrossOrigin
 @RestController
@@ -24,31 +26,31 @@ import fr.jdr.spring.services.GameSheetService;
 public class GameSheetController {
 	
 	@Autowired
-	private GameSheetService service;
+	private GenericService<GameSheet> service;
 	
 	@GetMapping("")
-	public List<GameSheetCreationDto> findAll() {
+	public List<GameSheet> findAll() {
 		return this.service.getAll();
 	}
 	
 	@GetMapping("{id}")
-	public GameSheetDto findById(@PathVariable String id) {
+	public GameSheet findById(@PathVariable String id) {
 		return this.service.getById(id);
 	}
 	
 	@PostMapping()
-	public GameSheetCreationDto create(@RequestBody GameSheetCreationDto dto) {
-		return this.service.create(dto);
+	public GameSheet create(@RequestBody GameSheet entity) {
+		return this.service.create(entity);
 	}
 	
-	@PutMapping("{id}/characinfosupdate")
-	public GameSheetDto updateCharacInfo(@RequestBody UpdateGameSheetCharacInfosDto dto) {
-		return this.service.updateCharacInfos(dto);
+	@PutMapping("{id}")
+	public GameSheet update(@RequestBody GameSheet entity) {
+		return this.service.update(entity);
 	}
 	
 	@DeleteMapping("{id}")
-	public void deleteById(@PathVariable String id) {
-		this.service.deleteById(id);
+	public void deleteById(@RequestBody GameSheet entity) {
+		this.service.delete(entity);
 	}
 
 }

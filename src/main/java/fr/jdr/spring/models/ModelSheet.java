@@ -13,12 +13,17 @@ import lombok.Data;
 public class ModelSheet {
 	@Id
 	private String id;
+	
 	private String name;
+	
+	private Boolean isPublic;
+	
 	@DBRef
 	private User user;
-	private Boolean isPublic;
+	
 	@DBRef
 	private GameType gameType;
+	
 	@DBRef
 	private List<BasePluginEdit> composants;
 		
