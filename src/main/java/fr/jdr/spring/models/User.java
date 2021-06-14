@@ -16,7 +16,7 @@ public class User {
 	private String nom;
 	private String email;
 	private String password;
-	private String acatar;
+	private String avatar;
 	private String bio;
 	private String ville;
 	

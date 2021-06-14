@@ -13,7 +13,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
-import fr.jdr.spring.services.servicesimpl.AuthentificationUserService;
+import fr.jdr.spring.services.servicesimpl.AuthentificationUserServiceImpl;
 import fr.jdr.spring.services.servicesimpl.ModificationUserServiceImpl;
 import fr.jdr.spring.services.servicesimpl.SimpleUserServiceImpl;
 import fr.jdr.spring.services.servicesimpl.UserServiceImpl;
@@ -48,8 +48,8 @@ public class UserConfig {
 	}
 	
 	@Bean
-	public AuthentificationUserService authService(UserRepository repository) {
-		return new AuthentificationUserService(repository);
+	public AuthentificationUserServiceImpl authService(UserRepository repository) {
+		return new AuthentificationUserServiceImpl(repository);
 	}
 	
 	@Bean

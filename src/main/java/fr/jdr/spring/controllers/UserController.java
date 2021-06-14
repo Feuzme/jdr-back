@@ -75,7 +75,8 @@ public class UserController {
 	
 	
 	@PatchMapping("")
-	public UserDTO modificationUserNamePassword(ModificationUsernameDTO dto) {
+	public UserDTO modificationUserNamePassword(@RequestBody ModificationUsernameDTO  dto) {
+		System.out.println(dto);
 		return this.modificationService.modificationUsernamePassword(dto);
 	}
 	

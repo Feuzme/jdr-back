@@ -1,8 +1,9 @@
 package fr.jdr.spring.services.servicesimpl;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -42,7 +43,8 @@ public class SimpleUserServiceImpl implements SimpleUserService{
 	}
 	
 	public SimpleUserDTO findSimpleUtilisateurById(String id) {
-		User utilisateur = this.userService.findById(id);
+		User utilisateur = this.repository.findById(id).get() ;
+		System.out.println(utilisateur);
 		return mapper.convertValue(utilisateur, SimpleUserDTO.class);
 	}
 }

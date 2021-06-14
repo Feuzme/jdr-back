@@ -50,12 +50,20 @@ public class ModificationUserServiceImpl implements ModificationUserService{
 	}
 
 	@Override
-	public UserDTO modificationUsernamePassword(ModificationUsernameDTO dto) {
-		User utilisateur = this.service.findById(dto.getId());
+	public UserDTO modificationUsernamePassword(ModificationUsernameDTO  dto) {
+		//System.out.println(dto.getId());
+		User utilisateur = this.repository.findById(dto.getId()).get();
+		//System.out.println(utilisateur);
 		if(dto.getNom()!=null)
 			utilisateur.setNom(dto.getNom());
 		if(dto.getEmail() != null)
 			utilisateur.setEmail(dto.getEmail());
+		if(dto.getBio() != null)
+			utilisateur.setBio(dto.getBio());
+		if(dto.getAvatar() != null)
+			utilisateur.setAvatar(null); 
+		if(dto.getVille() != null)
+			utilisateur.setVille(dto.getVille());
 		User result = this.repository.save(utilisateur);
 		return this.mapper.convertValue(result, UserDTO.class);
 	}

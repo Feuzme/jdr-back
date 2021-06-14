@@ -8,6 +8,6 @@ public interface ModificationUserService {
 
 	UserDTO creationNouveauUtilisateur(CreationUserDTO dto);
 
-	UserDTO modificationUsernamePassword(ModificationUsernameDTO dto);
+	UserDTO modificationUsernamePassword(ModificationUsernameDTO  dto);
 
 }

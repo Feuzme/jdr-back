@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ConnexionDTO {
 
-	private String usernameOrEmail;
+	private String nom;
 	private String password;
+	private String email;
 	
 }

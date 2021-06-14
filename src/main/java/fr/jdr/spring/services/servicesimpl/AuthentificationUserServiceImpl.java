@@ -13,24 +13,26 @@ import fr.jdr.spring.services.AuthentificationService;
 
 
 
-public class AuthentificationUserService implements AuthentificationService{
+public class AuthentificationUserServiceImpl implements AuthentificationService{
 
 	private UserRepository repository;
 	
-	public AuthentificationUserService(UserRepository repository) {
+	public AuthentificationUserServiceImpl(UserRepository repository) {
 		super();
 		this.repository = repository;
 	}
 
 	@Override
 	public String connexion(ConnexionDTO dto) {
-		// Trouver l'utilisateur en fonction de l'username ou email
-		Optional<User> optional = this.repository.findFirstByNomOrEmail(
-				dto.getUsernameOrEmail(), 
-				dto.getUsernameOrEmail());
+		// Trouver l'utilisateur en fonction de l'email
+		Optional<User> optional = this.repository.findFirstByEmail(dto.getEmail());
+				
 		User utilisateur = optional.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		if (utilisateur.getPassword().equals(Base64.encode(dto.getPassword().getBytes())))
+		System.out.println(utilisateur);
+		if (utilisateur.getPassword().equals(dto.getPassword())) {
+			System.out.println("le mot de passe est ok"+utilisateur);
 			return utilisateur.getId();
+		}
 		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
 }
