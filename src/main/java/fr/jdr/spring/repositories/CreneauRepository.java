@@ -1,5 +1,9 @@
 package fr.jdr.spring.repositories;
 
-public interface CreneauRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import fr.jdr.spring.models.Creneau;
+
+public interface CreneauRepository extends MongoRepository<Creneau, String>{
 
 }

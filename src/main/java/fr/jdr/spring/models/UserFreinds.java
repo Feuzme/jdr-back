@@ -6,18 +6,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
-@Data
+
 @Document
-public class Session {
+@Data
+public class UserFreinds {
 	@Id
-	private String id;
+	private Long id;
+
 	
 	@DBRef
-	private Game game;
-	
-	private Integer episode_num;
-	
-	private String resume;
-	
-	private String lieu;
+	private User users;
+
 }

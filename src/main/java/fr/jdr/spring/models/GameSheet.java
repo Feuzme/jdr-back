@@ -1,7 +1,5 @@
 package fr.jdr.spring.models;
 
-import java.time.LocalDateTime;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,21 +8,13 @@ import lombok.Data;
 
 @Data
 @Document
-public class Creneau {
+public class GameSheet {
 	@Id
 	private String id;
-	
-	private LocalDateTime date_Deb;
-	
-	private LocalDateTime date_Fin;
-	
-	private Integer frequence;
-	
-	private boolean prochaine_Session;
-	
+	private ModelSheet sheet;
+	private Object orginalCharacterInfos;
+	private Object characterInfos;
 	@DBRef
-	private User user;
+	private User user; 
 	
-	@DBRef
-	private Session session;
 }
