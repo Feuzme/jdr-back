@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import fr.jdr.spring.models.ModelSheet;
 
-public interface ModelSheetRepo extends MongoRepository<ModelSheet, String> {
+public interface ModelSheetRepository extends MongoRepository<ModelSheet, String> {
 
 }

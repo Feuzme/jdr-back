@@ -3,6 +3,7 @@ package fr.jdr.spring.services;
 import java.util.List;
 
 import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
+import fr.jdr.spring.dto.sheet.GameSheetDto;
 import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
 
 public interface GameSheetService {
@@ -16,7 +17,7 @@ public interface GameSheetService {
 	 * @param id
 	 * @return
 	 */
-	public GameSheetCreationDto getById(String id);
+	public GameSheetDto getById(String id);
 	
 	/**
 	 * permet mettre une GameSheet en base
@@ -30,7 +31,7 @@ public interface GameSheetService {
 	 * @param dto
 	 * @return
 	 */
-	public GameSheetCreationDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto);
+	public GameSheetDto updateCharacInfos(UpdateGameSheetCharacInfosDto dto);
 	
 	/**
 	 * supprime une fiche via son ID

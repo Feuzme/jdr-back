@@ -6,51 +6,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
-import fr.jdr.spring.dto.sheet.GameSheetDto;
-import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
-import fr.jdr.spring.models.GameSheet;
-import fr.jdr.spring.services.GameSheetService;
+import fr.jdr.spring.dto.sheet.ModelSheetDto;
+import fr.jdr.spring.dto.sheet.UpdateModelSheetDto;
+import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.services.GenericService;
+import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
 
 @CrossOrigin
 @RestController
-@RequestMapping("gamesheets")
-public class GameSheetController {
-	
+@RequestMapping("modelsheets")
+public class ModelSheetController {
 	@Autowired
-	private GenericService<GameSheet> service;
+	private GenericService<ModelSheet> service;
 	
 	@GetMapping("")
-	public List<GameSheet> findAll() {
+	public List<ModelSheet> getAll() {
 		return this.service.getAll();
 	}
 	
 	@GetMapping("{id}")
-	public GameSheet findById(@PathVariable String id) {
+	public ModelSheet getById(@PathVariable String id) {
 		return this.service.getById(id);
 	}
 	
-	@PostMapping()
-	public GameSheet create(@RequestBody GameSheet entity) {
+	@PostMapping("")
+	public ModelSheet create(@RequestBody ModelSheet entity) {
 		return this.service.create(entity);
 	}
 	
-	@PutMapping("{id}")
-	public GameSheet update(@RequestBody GameSheet entity) {
+	@PatchMapping("")
+	public ModelSheet update(ModelSheet entity) {
 		return this.service.update(entity);
 	}
 	
-	@DeleteMapping("{id}")
-	public void deleteById(@RequestBody GameSheet entity) {
+	@DeleteMapping("")
+	public void delete(@RequestBody ModelSheet entity) {
 		this.service.delete(entity);
 	}
-
 }
