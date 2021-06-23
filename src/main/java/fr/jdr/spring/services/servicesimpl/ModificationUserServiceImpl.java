@@ -36,7 +36,7 @@ public class ModificationUserServiceImpl implements ModificationUserService{
 	public UserDTO creationNouveauUtilisateur(CreationUserDTO dto) {
 		checkCreationUtilisateur(dto);
 		User entity = this.mapper.convertValue(dto, User.class);
-		entity.setPassword(Base64.encode(dto.getPassword().getBytes()));
+		entity.setPassword(dto.getPassword());
 		entity.setCreateAt(LocalDateTime.now());
 		entity.setUpdateAt(LocalDateTime.now());
 		User result = this.repository.save(entity);
