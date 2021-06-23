@@ -21,6 +21,7 @@ import fr.jdr.spring.models.Game;
 import fr.jdr.spring.models.GameSheet;
 import fr.jdr.spring.models.GameType;
 import fr.jdr.spring.models.ModelSheet;
+import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
@@ -32,6 +33,7 @@ import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameSheetServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameTypeServiceImpl;
 import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
+import fr.jdr.spring.services.servicesimpl.PlugInServiceImpl;
 import fr.jdr.spring.services.servicesimpl.SessionServiceImpl;
 
 @Configuration
@@ -80,6 +82,11 @@ public class ServiceConfig {
 	@Bean
 	public GenericService<GameType> gameTypefactory() {
 		return new GameTypeServiceImpl();
+	}
+	
+	@Bean
+	public GenericService<PlugIn> plugInServiceFactory(){
+		return new PlugInServiceImpl();
 	}
 	
 	@Bean

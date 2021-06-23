@@ -42,7 +42,7 @@ public class ModelSheetController {
 	}
 	
 	@PatchMapping("")
-	public ModelSheet update(ModelSheet entity) {
+	public ModelSheet update(@RequestBody ModelSheet entity) {
 		return this.service.update(entity);
 	}
 	
