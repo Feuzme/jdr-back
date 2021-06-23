@@ -1,4 +1,5 @@
 package fr.jdr.spring.models;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,11 +16,12 @@ public class User {
 	private String nom;
 	private String email;
 	private String password;
-	private String acatar;
+	private String avatar;
 	private String bio;
 	private String ville;
 	
-	private boolean loggedIn;
+	private LocalDateTime createAt;
+	private LocalDateTime updateAt;
 	
 
 	public enum Status {

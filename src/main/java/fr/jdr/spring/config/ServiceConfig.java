@@ -16,6 +16,10 @@ import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.repositories.GameSheetRepository;
 import fr.jdr.spring.repositories.ModelSheetRepository;
+import fr.jdr.spring.models.ComposantEdit;
+import fr.jdr.spring.models.ComposantStandard;
+import fr.jdr.spring.models.User;
+import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.models.Creneau;
 import fr.jdr.spring.models.Game;
 import fr.jdr.spring.models.GameSheet;
@@ -47,11 +51,12 @@ public class ServiceConfig {
 		return new BasePluginEditImpl();
 	}
 	
-	@Bean
+	/*@Bean
 	public UserService UserServiceFactory() {
 		return new UserServiceImpl();
 	}
 
+	*/
 	@Bean
 	public GenericService<Creneau> creneauServiceFactory(){
 		return new CreneauServiceImpl();
@@ -89,4 +94,7 @@ public class ServiceConfig {
 				.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 				.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 	}
+	
+
+	
 }
