@@ -22,7 +22,8 @@ import fr.jdr.spring.services.servicesimpl.UserServiceImpl;
 
 @Configuration
 public class UserConfig {
-
+/**
+ 
 	@Bean
 	public ObjectMapper objectMapper() {
 		/*return new ObjectMapper()
@@ -31,14 +32,14 @@ public class UserConfig {
 			.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 			.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 		*/
-		ObjectMapper mapper = new ObjectMapper();
+/*		ObjectMapper mapper = new ObjectMapper();
 		mapper.registerModule(new JavaTimeModule());
 		mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		mapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 		return mapper;
 	}
-	
+	*/
 	
 	
 	

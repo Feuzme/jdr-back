@@ -16,8 +16,6 @@ import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.repositories.GameSheetRepository;
 import fr.jdr.spring.repositories.ModelSheetRepository;
-import fr.jdr.spring.models.ComposantEdit;
-import fr.jdr.spring.models.ComposantStandard;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.models.Creneau;
