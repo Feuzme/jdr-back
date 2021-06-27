@@ -12,10 +12,8 @@ import lombok.Data;
 @Document
 public class ModelSheet {
 	@Id
-	private String id;
-	
-	private String name;
-	
+	private String id;	
+	private String name;	
 	private Boolean isPublic;
 	
 	@DBRef

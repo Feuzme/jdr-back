@@ -16,5 +16,4 @@ public class PlugIn {
 	@DBRef
 	private GameType gameType;
 	private String config;
-	private PositionSize positionSize;
 }
