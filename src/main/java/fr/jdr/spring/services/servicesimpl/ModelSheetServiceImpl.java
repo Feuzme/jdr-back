@@ -16,10 +16,12 @@ import fr.jdr.spring.repositories.ModelSheetRepository;
 import fr.jdr.spring.services.GenericService;
 import fr.jdr.spring.services.ModelSheetService;
 
-public class ModelSheetServiceImpl implements GenericService<ModelSheet> {
+public class ModelSheetServiceImpl implements ModelSheetService {
 	
 	@Autowired
 	private ModelSheetRepository repository;
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public List<ModelSheet> getAll() {
@@ -34,6 +36,7 @@ public class ModelSheetServiceImpl implements GenericService<ModelSheet> {
 
 	@Override
 	public ModelSheet create(ModelSheet entity) {
+//		this.mapper.convertValue(entity., null)
 		return this.repository.save(entity);
 	}
 
