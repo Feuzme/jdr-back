@@ -1,27 +1,19 @@
 package fr.jdr.spring.services.servicesimpl;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import fr.jdr.spring.dto.sheet.ModelSheetDto;
-import fr.jdr.spring.dto.sheet.UpdateModelSheetDto;
 import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.repositories.ModelSheetRepository;
-import fr.jdr.spring.services.GenericService;
 import fr.jdr.spring.services.ModelSheetService;
 
 public class ModelSheetServiceImpl implements ModelSheetService {
 	
 	@Autowired
 	private ModelSheetRepository repository;
-	@Autowired
-	private ObjectMapper mapper;
 
 	@Override
 	public List<ModelSheet> getAll() {
@@ -36,7 +28,6 @@ public class ModelSheetServiceImpl implements ModelSheetService {
 
 	@Override
 	public ModelSheet create(ModelSheet entity) {
-//		this.mapper.convertValue(entity., null)
 		return this.repository.save(entity);
 	}
 
