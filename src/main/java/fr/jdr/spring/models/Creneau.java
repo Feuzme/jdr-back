@@ -14,13 +14,13 @@ public class Creneau {
 	@Id
 	private String id;
 	
-	private LocalDateTime date_Deb;
+	private LocalDateTime dateDeb;
 	
-	private LocalDateTime date_Fin;
+	private LocalDateTime dateFin;
 	
 	private Integer frequence;
 	
-	private boolean prochaine_Session;
+	private boolean prochaineSession;
 	
 	@DBRef
 	private User user;

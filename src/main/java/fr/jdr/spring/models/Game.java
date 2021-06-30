@@ -14,19 +14,19 @@ public class Game {
 	
 	private String nom;
 	
-	private Integer nb_joueur;
+	private Integer nbJoueur;
 	
 	private String trame;
 	
 	private String logo;
 	
-	private Boolean is_public;
+	private Boolean isPublic;
 	
 	private String status;
 	
 	@DBRef
-	private User mj_user;
+	private User mjUser;
 	
 	@DBRef
-	private GameType game_type;
+	private GameType gameType;
 }
