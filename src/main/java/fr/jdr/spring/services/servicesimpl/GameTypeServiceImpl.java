@@ -11,6 +11,7 @@ import fr.jdr.spring.repositories.GameTypeRepository;
 import fr.jdr.spring.services.GenericService;
 
 public class GameTypeServiceImpl implements GenericService<GameType> {
+
 	@Autowired
 	private GameTypeRepository repository;
 	
