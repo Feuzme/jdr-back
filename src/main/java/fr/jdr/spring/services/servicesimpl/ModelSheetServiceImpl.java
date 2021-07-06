@@ -40,6 +40,7 @@ public class ModelSheetServiceImpl implements GenericService<ModelSheet> {
 	
 	@Override
 	public ModelSheet update(ModelSheet entity) {
+		System.out.println("id="+entity.getId()+", isPublic="+entity.getIsPublic());
 		ModelSheet modelSheet = this.repository.findById(entity.getId())
 				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		
