@@ -16,11 +16,14 @@ import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.repositories.GameSheetRepository;
 import fr.jdr.spring.repositories.ModelSheetRepository;
+import fr.jdr.spring.models.User;
+import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.models.Creneau;
 import fr.jdr.spring.models.Game;
 import fr.jdr.spring.models.GameSheet;
 import fr.jdr.spring.models.GameType;
 import fr.jdr.spring.models.ModelSheet;
+import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.models.Session;
 import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
@@ -32,6 +35,7 @@ import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameSheetServiceImpl;
 import fr.jdr.spring.services.servicesimpl.GameTypeServiceImpl;
 import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
+import fr.jdr.spring.services.servicesimpl.PlugInServiceImpl;
 import fr.jdr.spring.services.servicesimpl.SessionServiceImpl;
 
 @Configuration
@@ -47,11 +51,12 @@ public class ServiceConfig {
 		return new BasePluginEditImpl();
 	}
 	
-	@Bean
+	/*@Bean
 	public UserService UserServiceFactory() {
 		return new UserServiceImpl();
 	}
 
+	*/
 	@Bean
 	public GenericService<Creneau> creneauServiceFactory(){
 		return new CreneauServiceImpl();
@@ -83,10 +88,18 @@ public class ServiceConfig {
 	}
 	
 	@Bean
+	public GenericService<PlugIn> plugInServiceFactory(){
+		return new PlugInServiceImpl();
+	}
+	
+	@Bean
 	public ObjectMapper objectMapper() {
 		return new ObjectMapper().registerModule(new JavaTimeModule())
 				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
 				.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 				.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
 	}
+	
+
+	
 }
