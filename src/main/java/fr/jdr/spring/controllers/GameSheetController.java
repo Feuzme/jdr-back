@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.dto.sheet.GameSheetCreationDto;
-import fr.jdr.spring.dto.sheet.GameSheetDto;
-import fr.jdr.spring.dto.sheet.UpdateGameSheetCharacInfosDto;
 import fr.jdr.spring.models.GameSheet;
-import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
 
 @CrossOrigin

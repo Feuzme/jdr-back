@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.dto.sheet.ModelSheetDto;
-import fr.jdr.spring.dto.sheet.UpdateModelSheetDto;
 import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.services.GenericService;
-import fr.jdr.spring.services.servicesimpl.ModelSheetServiceImpl;
 
 @CrossOrigin
 @RestController
@@ -42,7 +39,7 @@ public class ModelSheetController {
 	}
 	
 	@PatchMapping("")
-	public ModelSheet update(ModelSheet entity) {
+	public ModelSheet update(@RequestBody ModelSheet entity) {
 		return this.service.update(entity);
 	}
 	

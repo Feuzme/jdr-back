@@ -12,10 +12,8 @@ import lombok.Data;
 @Document
 public class ModelSheet {
 	@Id
-	private String id;
-	
-	private String name;
-	
+	private String id;	
+	private String name;	
 	private Boolean isPublic;
 	
 	@DBRef
@@ -25,6 +23,5 @@ public class ModelSheet {
 	private GameType gameType;
 	
 	@DBRef
-	private List<BasePluginEdit> composants;
-		
+	private List<PlugIn> composants;		
 }

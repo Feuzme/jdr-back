@@ -21,12 +21,6 @@ import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.services.UserService;
 
 
-
-
-
-
-
-
 public class UserServiceImpl extends GenericCRUDServiceImpl<User> implements UserService {
 
 	

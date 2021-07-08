@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,38 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.GameType;
+import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.services.GenericService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("gametypes")
-public class GameTypeController {
+@RequestMapping("plugins")
+public class PlugInController {
 	@Autowired
-	private GenericService<GameType> service;
-	
+	private GenericService<PlugIn> service;
+
 	@GetMapping("")
-	public List<GameType> getAll(){
-		return this.service.getAll();
+	public List<PlugIn> getAll() {
+		return service.getAll();
 	}
-	
-	@PostMapping("")
-	public GameType save(@RequestBody GameType entity) {
-		return this.service.create(entity);
-	}
-	
+
 	@GetMapping("{id}")
-	public GameType getById(@PathVariable String id) {
-		return this.service.getById(id);
+	public PlugIn getById(@PathVariable String id) {
+		return service.getById(id);
 	}
-	
+
+	@PostMapping("")
+	public PlugIn create(@RequestBody PlugIn entity) {
+		return service.create(entity);
+	}
+
 	@PatchMapping("")
-	public GameType update(@RequestBody GameType entity) {
-		return this.service.update(entity);
+	public PlugIn update(@RequestBody PlugIn entity) {
+		return service.update(entity);
+	}
+
+	public void delete(@RequestBody PlugIn entity) {
+		service.delete(entity);
 	}
 	
-	@DeleteMapping("")
-	public void deleteById(@RequestBody GameType entity) {
-		this.service.delete(entity);
-	}
+	
 }
