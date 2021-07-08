@@ -3,7 +3,6 @@ package fr.jdr.spring.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.dto.ConnexionDTO;
 import fr.jdr.spring.dto.CreationUserDTO;
-import fr.jdr.spring.dto.ModificationPasswordDTO;
 import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
-import fr.jdr.spring.models.User.Status;
 import fr.jdr.spring.services.ModificationUserService;
 import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
@@ -39,12 +35,7 @@ public class UserController {
 	private SimpleUserService simpleUserService;
 	
 	@Autowired
-	private ModificationUserService modificationService;
-	
-	
-	
-	
-	
+	private ModificationUserService modificationService;	
 	
 	@PostMapping("")
 	public UserDTO creationNouveauUtilisateur(@RequestBody CreationUserDTO dto) {
