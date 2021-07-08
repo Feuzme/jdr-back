@@ -22,6 +22,7 @@ public class User {
 	
 	private LocalDateTime createAt;
 	private LocalDateTime updateAt;
+
 	
 
 	public enum Status {
