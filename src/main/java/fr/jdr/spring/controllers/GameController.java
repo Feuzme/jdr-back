@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.jdr.spring.models.Game;
+import fr.jdr.spring.models.User;
 import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
 
 @RestController
@@ -35,6 +36,11 @@ public class GameController {
 	@GetMapping("mj/{id}")
 	public List<Game> getAllByMjUser(@PathVariable String id) {
 		return this.gameService.findAllByMj(id);
+	}
+	
+	@GetMapping("players/{id}")
+	public List<Game> getAllByListPlayers(@PathVariable String id) {
+		return this.gameService.findAllByPlayers(id);
 	}
 	
 	@PostMapping()

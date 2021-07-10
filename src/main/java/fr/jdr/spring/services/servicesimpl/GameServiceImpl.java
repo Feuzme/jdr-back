@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.jdr.spring.models.Game;
+import fr.jdr.spring.models.User;
 import fr.jdr.spring.repositories.GameRepository;
 import fr.jdr.spring.services.GenericService;
 
@@ -39,6 +40,10 @@ public class GameServiceImpl implements GenericService<Game> {
 	}
 	
 	public List<Game> findAllByMj(String id){
-		return this.gameRepository.findByMjUserLike(id);
+		return this.gameRepository.findByMjUser(id);
+	}
+	
+	public List<Game> findAllByPlayers(String id){
+		return this.gameRepository.findByListPlayers(id);
 	}
 }

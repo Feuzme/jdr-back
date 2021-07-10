@@ -32,5 +32,6 @@ public class Game {
 	@DBRef
 	private GameType gameType;
 	
-	private List<String> listPlayers;
+	@DBRef
+	private List<User> listPlayers;
 }
