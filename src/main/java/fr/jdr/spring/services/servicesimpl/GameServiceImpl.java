@@ -37,4 +37,8 @@ public class GameServiceImpl implements GenericService<Game> {
 	public void delete(Game game) {
 		this.gameRepository.delete(game);	
 	}
+	
+	public List<Game> findAllByMj(String id){
+		return this.gameRepository.findByMjUserLike(id);
+	}
 }
