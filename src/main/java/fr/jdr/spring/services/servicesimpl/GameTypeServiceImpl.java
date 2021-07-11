@@ -38,8 +38,8 @@ public class GameTypeServiceImpl implements GenericService<GameType> {
 
 		if(game.getLogo() != null)
 			gameType.setLogo(game.getLogo());
-		if(game.getNom() != null)
-			gameType.setNom(game.getNom());
+		if(game.getName() != null)
+			gameType.setName(game.getName());
 		
 		return this.repository.save(gameType);
 	}
