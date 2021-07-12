@@ -43,7 +43,7 @@ public class PlugInController {
 		return service.update(entity);
 	}
 
-	@DeleteMapping("")
+	@DeleteMapping("{id}")
 	public void delete(@RequestBody PlugIn entity) {
 		service.delete(entity);
 	}
