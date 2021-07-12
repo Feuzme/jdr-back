@@ -13,7 +13,8 @@ public class PlugIn {
 	private String id;
 	private String nom;
 	private String auteur;
+	private Boolean origin;
 	@DBRef
 	private GameType gameType;
-	private String config;
+	private Object config;
 }

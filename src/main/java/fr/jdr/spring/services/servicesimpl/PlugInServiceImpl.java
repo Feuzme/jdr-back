@@ -40,11 +40,13 @@ public class PlugInServiceImpl implements GenericService<PlugIn> {
 		if(entity.getNom() != null)
 			plugIn.setNom(entity.getNom());
 		if(entity.getAuteur() != null)
-			plugIn.setConfig(entity.getAuteur());
+			plugIn.setAuteur(entity.getAuteur());
 		if(entity.getConfig() != null)
 			plugIn.setConfig(entity.getConfig());
 		if(entity.getGameType() != null)
-			plugIn.setGameType(entity.getGameType());		
+			plugIn.setGameType(entity.getGameType());	
+		if(entity.getOrigin() != null)
+			plugIn.setOrigin(entity.getOrigin());
 		
 		return this.repository.save(plugIn);
 	}
