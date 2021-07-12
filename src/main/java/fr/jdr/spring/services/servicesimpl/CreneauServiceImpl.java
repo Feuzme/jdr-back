@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.jdr.spring.models.Creneau;
+import fr.jdr.spring.models.Game;
 import fr.jdr.spring.repositories.CreneauRepository;
 import fr.jdr.spring.services.GenericService;
 
@@ -36,5 +37,9 @@ public class CreneauServiceImpl implements GenericService<Creneau> {
 	@Override
 	public void delete(Creneau creneau) {
 		this.creneauRepository.delete(creneau);	
+	}
+	
+	public List<Creneau> findAllByGame(String gameId){
+		return this.creneauRepository.findByGame(gameId);
 	}
 }

@@ -44,7 +44,7 @@ public class ServiceConfig {
 	}
 
 	@Bean
-	public GenericService<Creneau> creneauServiceFactory(){
+	public CreneauServiceImpl creneauServiceFactory(){
 		return new CreneauServiceImpl();
 	}
 	

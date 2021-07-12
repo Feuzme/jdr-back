@@ -45,7 +45,7 @@ public class GameController {
 		return this.gameService.findAllByPlayers(id);
 	}
 
-	@PostMapping("addPlayer/{gameId}/{newPlayerId}")
+	@PostMapping("addplayer/{gameId}/{newPlayerId}")
 	public Game addNewPlayer(@PathVariable String gameId, @PathVariable String newPlayerId) {
 		return this.gameService.addPlayers(gameId, newPlayerId);
 	}
