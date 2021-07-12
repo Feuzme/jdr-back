@@ -44,6 +44,11 @@ public class GameController {
 	public List<Game> getAllByListPlayers(@PathVariable String id) {
 		return this.gameService.findAllByPlayers(id);
 	}
+
+	@PostMapping("addPlayer/{gameId}/{newPlayerId}")
+	public Game addNewPlayer(@PathVariable String gameId, @PathVariable String newPlayerId) {
+		return this.gameService.addPlayers(gameId, newPlayerId);
+	}
 	
 	@PostMapping()
 	public Game create(@RequestBody Game game) {
