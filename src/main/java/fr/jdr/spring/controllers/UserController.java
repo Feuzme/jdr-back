@@ -72,8 +72,6 @@ public class UserController {
 
 	@PostMapping("ami")
 	public User ajoutAmi(@RequestBody UserFriends ids) {
-		System.out.println(ids.getIdAmi());
-		System.out.println(ids.getMyId());
 		User user = this.userService.findById(ids.getMyId());
 		user.getIds().add(ids.getIdAmi());
 		return this.userService.save(user);
@@ -81,11 +79,8 @@ public class UserController {
 
 	@PatchMapping("ami")
 	public User suppressionAmi(@RequestBody UserFriends ids) {
-		System.out.println(ids.getIdAmi());
-		System.out.println(ids.getMyId());
 		User user = this.userService.findById(ids.getMyId());
 		user.setIds(user.getIds().stream().filter(id -> !ids.getIdAmi().equals(id)).collect(Collectors.toList()));
-		System.out.println(user.getIds());
 		return this.userService.save(user);
 	}
 
