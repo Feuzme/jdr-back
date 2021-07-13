@@ -16,14 +16,14 @@ public class BasePlugin {
 	private String id;
 	
 	@Getter @Setter
-	private String nom;
+	private String name;
 	
 	@Getter @Setter
 	private Object config;
 	
-	public BasePlugin(String nom, Object config) {
+	public BasePlugin(String name, Object config) {
 		super();
-		this.nom = nom;
+		this.name = name;
 		this.config = config;
 	}
 	
