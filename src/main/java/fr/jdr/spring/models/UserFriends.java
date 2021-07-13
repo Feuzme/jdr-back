@@ -7,14 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 
-@Document
 @Data
 public class UserFriends {
-	@Id
-	private Long id;
-
-	
-	@DBRef
-	private User users;
-
+	private String idAmi;
+	private String myId;
 }

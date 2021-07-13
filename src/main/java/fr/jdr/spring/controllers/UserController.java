@@ -5,6 +5,7 @@ import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
+import fr.jdr.spring.models.UserFriends;
 import fr.jdr.spring.services.ModificationUserService;
 import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
@@ -66,6 +67,15 @@ public class UserController {
 	public UserDTO modificationUserNamePassword(@RequestBody ModificationUsernameDTO dto) {
 		System.out.println(dto);
 		return this.modificationService.modificationUsernamePassword(dto);
+	}
+
+	@PostMapping("ami")
+	public User ajoutAmi(@RequestBody UserFriends ids) {
+		System.out.println(ids.getIdAmi());
+		System.out.println(ids.getMyId());
+		User user = this.userService.findById(ids.getMyId());
+		user.getIds().add(ids.getIdAmi());
+		return this.userService.save(user);
 	}
 
 

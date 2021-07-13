@@ -21,7 +21,7 @@ public class AuthentificationUserServiceImpl implements AuthentificationService 
 	}
 
 	@Override
-	public String connexion(ConnexionDTO dto) {
+	public User connexion(ConnexionDTO dto) {
 		// Trouver l'utilisateur en fonction de l'email
 		Optional<User> optional;
 		String regex = "^(.+)@(.+)$";
@@ -36,7 +36,7 @@ public class AuthentificationUserServiceImpl implements AuthentificationService 
 		System.out.println(utilisateur);
 		if (utilisateur.getPassword().equals(dto.getPassword())) {
 			System.out.println("le mot de passe est ok" + utilisateur);
-			return utilisateur.getId();
+			return utilisateur;
 		}
 		throw new ResponseStatusException(HttpStatus.FORBIDDEN);
 	}
