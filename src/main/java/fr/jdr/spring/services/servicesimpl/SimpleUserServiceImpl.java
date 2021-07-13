@@ -1,20 +1,18 @@
 package fr.jdr.spring.services.servicesimpl;
 
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.models.User;
 import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class SimpleUserServiceImpl implements SimpleUserService{
+
+public class SimpleUserServiceImpl implements SimpleUserService {
 
 	private ObjectMapper mapper;
 	private UserRepository repository;
@@ -41,9 +39,15 @@ public class SimpleUserServiceImpl implements SimpleUserService{
 		}
 		return results;
 	}
-	
+
+	@Override
+	public SimpleUserDTO findByNameOrEmail(String name, String email) {
+		Optional<User> user = this.repository.findByEmailOrNom(email, name);
+		return user.map(value -> mapper.convertValue(value, SimpleUserDTO.class)).orElse(null);
+	}
+
 	public SimpleUserDTO findSimpleUtilisateurById(String id) {
-		User utilisateur = this.repository.findById(id).get() ;
+		User utilisateur = this.repository.findById(id).get();
 		System.out.println(utilisateur);
 		return mapper.convertValue(utilisateur, SimpleUserDTO.class);
 	}
