@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ModificationUsernameDTO {
 
-	
 	private String id;
 	private String nom;
 	private String email;

@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Document
 @Data
-public class UserFreinds {
+public class UserFriends {
 	@Id
 	private Long id;
 
