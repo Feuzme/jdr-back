@@ -1,5 +1,6 @@
 package fr.jdr.spring.controllers;
 
+import fr.jdr.spring.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class AuthentificationController {
 	private AuthentificationService authService;
 	
 	@PostMapping("connexion")
-	public String connexion(@RequestBody ConnexionDTO dto) {
+	public User connexion(@RequestBody ConnexionDTO dto) {
 		return this.authService.connexion(dto);
 	}
 }

@@ -11,4 +11,6 @@ public interface SimpleUserService {
 
 	List<SimpleUserDTO> trouverToutLesUtilisateurs();
 
+	SimpleUserDTO findByNameOrEmail(String name, String email);
+
 }

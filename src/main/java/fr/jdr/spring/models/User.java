@@ -1,7 +1,10 @@
 package fr.jdr.spring.models;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
@@ -19,9 +22,11 @@ public class User {
 	private String avatar;
 	private String bio;
 	private String ville;
+	private Collection<String> ids = new ArrayList<>();
 	
 	private LocalDateTime createAt;
 	private LocalDateTime updateAt;
+
 	
 
 	public enum Status {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.services.GenericService;
+import fr.jdr.spring.services.servicesimpl.PlugInServiceImpl;
 
 @CrossOrigin
 @RestController
 @RequestMapping("plugins")
 public class PlugInController {
 	@Autowired
-	private GenericService<PlugIn> service;
+	private PlugInServiceImpl service;
 
 	@GetMapping("")
 	public List<PlugIn> getAll() {
@@ -42,9 +44,8 @@ public class PlugInController {
 		return service.update(entity);
 	}
 
-	public void delete(@RequestBody PlugIn entity) {
-		service.delete(entity);
-	}
-	
-	
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable String id) {
+		service.delete(id);
+	}	
 }
