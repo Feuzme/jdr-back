@@ -26,5 +26,4 @@ public class BasePlugin {
 		this.nom = nom;
 		this.config = config;
 	}
-	
 }

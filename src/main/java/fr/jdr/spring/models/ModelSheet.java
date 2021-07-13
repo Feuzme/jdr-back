@@ -23,5 +23,5 @@ public class ModelSheet {
 	private GameType gameType;
 	
 	@DBRef
-	private List<PlugIn> composants;		
+	private List<PlugIn> composants;	
 }
