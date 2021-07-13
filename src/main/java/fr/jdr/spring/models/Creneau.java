@@ -15,9 +15,9 @@ public class Creneau {
 	@Id
 	private String id;
 	
-	private LocalDateTime dateDeb;
+	private String dateDeb;
 	
-	private LocalDateTime dateFin;
+	private String dateFin;
 	
 	private boolean prochaineSession;
 	
