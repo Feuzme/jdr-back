@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.services.GenericService;
+import fr.jdr.spring.services.servicesimpl.PlugInServiceImpl;
 
 @CrossOrigin
 @RestController
 @RequestMapping("plugins")
 public class PlugInController {
 	@Autowired
-	private GenericService<PlugIn> service;
+	private PlugInServiceImpl service;
 
 	@GetMapping("")
 	public List<PlugIn> getAll() {
@@ -44,9 +45,7 @@ public class PlugInController {
 	}
 
 	@DeleteMapping("{id}")
-	public void delete(@RequestBody PlugIn entity) {
-		service.delete(entity);
-	}
-	
-	
+	public void delete(@PathVariable String id) {
+		service.delete(id);
+	}	
 }

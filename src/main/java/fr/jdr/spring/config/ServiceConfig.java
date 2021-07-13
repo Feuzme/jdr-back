@@ -51,12 +51,6 @@ public class ServiceConfig {
 		return new BasePluginEditImpl();
 	}
 	
-	/*@Bean
-	public UserService UserServiceFactory() {
-		return new UserServiceImpl();
-	}
-
-	*/
 	@Bean
 	public GenericService<Creneau> creneauServiceFactory(){
 		return new CreneauServiceImpl();
@@ -88,7 +82,7 @@ public class ServiceConfig {
 	}
 	
 	@Bean
-	public GenericService<PlugIn> plugInServiceFactory(){
+	public PlugInServiceImpl plugInServiceFactory(){
 		return new PlugInServiceImpl();
 	}
 	

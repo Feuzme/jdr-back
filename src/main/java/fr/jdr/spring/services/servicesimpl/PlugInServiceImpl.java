@@ -58,5 +58,12 @@ public class PlugInServiceImpl implements GenericService<PlugIn> {
 		else
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);			
 	}
+	
+	public void delete(String id) {
+		if(this.repository.existsById(id))
+			this.repository.deleteById(id);
+		else
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+	}
 
 }
