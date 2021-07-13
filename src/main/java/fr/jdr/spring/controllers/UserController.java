@@ -1,86 +1,74 @@
 package fr.jdr.spring.controllers;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import fr.jdr.spring.dto.ConnexionDTO;
 import fr.jdr.spring.dto.CreationUserDTO;
-import fr.jdr.spring.dto.ModificationPasswordDTO;
 import fr.jdr.spring.dto.ModificationUsernameDTO;
 import fr.jdr.spring.dto.SimpleUserDTO;
 import fr.jdr.spring.dto.UserDTO;
 import fr.jdr.spring.models.User;
-import fr.jdr.spring.models.User.Status;
 import fr.jdr.spring.services.ModificationUserService;
 import fr.jdr.spring.services.SimpleUserService;
 import fr.jdr.spring.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("users")
 @CrossOrigin
 public class UserController {
 
-	@Autowired
-	private UserService userService;
+	private final UserService userService;
 
-	
+	private final SimpleUserService simpleUserService;
+
+	private final ModificationUserService modificationService;
+
 	@Autowired
-	private SimpleUserService simpleUserService;
-	
-	@Autowired
-	private ModificationUserService modificationService;
-	
-	
-	
-	
-	
-	
+	public UserController(UserService userService, SimpleUserService simpleUserService, ModificationUserService modificationService) {
+		this.userService = userService;
+		this.simpleUserService = simpleUserService;
+		this.modificationService = modificationService;
+	}
+
 	@PostMapping("")
 	public UserDTO creationNouveauUtilisateur(@RequestBody CreationUserDTO dto) {
-		return this.modificationService.creationNouveauUtilisateur(dto);
+		if (this.simpleUserService.findByNameOrEmail(dto.getNom(), dto.getEmail()) == null) {
+			return this.modificationService.creationNouveauUtilisateur(dto);
+		}
+		return null;
 	}
-	
+
 
 	@GetMapping("{id}/detail")
 	public User findByIdDetail(@PathVariable String id) {
 		return this.userService.findById(id);
 	}
-	
+
 	@GetMapping("{id}")
 	public SimpleUserDTO findById(@PathVariable String id) {
 		return this.simpleUserService.findSimpleUtilisateurById(id);
 	}
-	
+
 	@GetMapping("")
-	public List<SimpleUserDTO> findAll(){
+	public List<SimpleUserDTO> findAll() {
 		return this.simpleUserService.trouverToutLesUtilisateurs();
 	}
-	
-	
+
+
 	@DeleteMapping("{id}")
 	public void supprimerParId(@PathVariable String id) {
 		this.userService.deleteById(id);
 	}
-	
-	
+
+
 	@PatchMapping("")
-	public UserDTO modificationUserNamePassword(@RequestBody ModificationUsernameDTO  dto) {
+	public UserDTO modificationUserNamePassword(@RequestBody ModificationUsernameDTO dto) {
 		System.out.println(dto);
 		return this.modificationService.modificationUsernamePassword(dto);
 	}
-	
-	
+
+
 }
 
 	
@@ -162,13 +150,13 @@ public class UserController {
 
 	}
 	*/
-	
 
-	
-	/*
-	 * @GetMapping("/nom/{nom}") public List<User> findByNomLike(@PathVariable
-	 * String nom) { return this.userService.findByNomLike(nom) ; }
-	 */
+
+
+/*
+ * @GetMapping("/nom/{nom}") public List<User> findByNomLike(@PathVariable
+ * String nom) { return this.userService.findByNomLike(nom) ; }
+ */
 	
 	
 
