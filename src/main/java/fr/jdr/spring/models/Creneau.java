@@ -1,7 +1,5 @@
 package fr.jdr.spring.models;
 
-import java.time.LocalDateTime;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
