@@ -11,7 +11,7 @@ public class GameType {
 	@Id
 	private String id;
 	
-	private String nom;
+	private String name;
 	
 	private String logo;
 }

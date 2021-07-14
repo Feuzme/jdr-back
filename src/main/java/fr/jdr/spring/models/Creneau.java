@@ -1,7 +1,6 @@
 package fr.jdr.spring.models;
 
-import java.time.LocalDateTime;
-
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,17 +13,16 @@ public class Creneau {
 	@Id
 	private String id;
 	
-	private LocalDateTime date_Deb;
+	private String dateDeb;
 	
-	private LocalDateTime date_Fin;
+	private String dateFin;
 	
-	private Integer frequence;
-	
-	private boolean prochaine_Session;
+	private boolean prochaineSession;
 	
 	@DBRef
 	private User user;
 	
 	@DBRef
-	private Session session;
+	@Lazy(true)
+	private Game game;
 }

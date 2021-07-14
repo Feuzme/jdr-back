@@ -10,14 +10,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import fr.jdr.spring.services.UserService;
-import fr.jdr.spring.services.servicesimpl.UserServiceImpl;
 import fr.jdr.spring.models.BasePluginEdit;
 import fr.jdr.spring.models.BasePlugin;
-import fr.jdr.spring.repositories.GameSheetRepository;
-import fr.jdr.spring.repositories.ModelSheetRepository;
-import fr.jdr.spring.models.User;
-import fr.jdr.spring.repositories.UserRepository;
 import fr.jdr.spring.models.Creneau;
 import fr.jdr.spring.models.Game;
 import fr.jdr.spring.models.GameSheet;
@@ -25,9 +19,7 @@ import fr.jdr.spring.models.GameType;
 import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.models.Session;
-import fr.jdr.spring.services.GameSheetService;
 import fr.jdr.spring.services.GenericService;
-import fr.jdr.spring.services.ModelSheetService;
 import fr.jdr.spring.services.servicesimpl.BasePluginEditImpl;
 import fr.jdr.spring.services.servicesimpl.BasePluginImpl;
 import fr.jdr.spring.services.servicesimpl.CreneauServiceImpl;
@@ -50,14 +42,14 @@ public class ServiceConfig {
 	public GenericService<BasePluginEdit> composantEditServiceFactory() {
 		return new BasePluginEditImpl();
 	}
-	
+
 	@Bean
-	public GenericService<Creneau> creneauServiceFactory(){
+	public CreneauServiceImpl creneauServiceFactory(){
 		return new CreneauServiceImpl();
 	}
 	
 	@Bean
-	public GenericService<Game> gameServiceFactory(){
+	public GameServiceImpl gameServiceFactory(){
 		return new GameServiceImpl();
 	}
 	

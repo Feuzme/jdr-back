@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.jdr.spring.models.Game;
+import fr.jdr.spring.models.User;
+import fr.jdr.spring.services.servicesimpl.GameServiceImpl;
+
 import fr.jdr.spring.services.GenericService;
-@CrossOrigin
 @RestController
 @RequestMapping("games")
+@CrossOrigin
 public class GameController {
 	
 	@Autowired
-	private GenericService<Game> gameService;
+	private GameServiceImpl gameService;
 	
 	@GetMapping()
 	public List<Game> getAll(){
@@ -31,6 +34,21 @@ public class GameController {
 	@GetMapping("{id}")
 	public Game getById(@PathVariable String id) {
 		return this.gameService.getById(id);
+	}
+	
+	@GetMapping("mj/{id}")
+	public List<Game> getAllByMjUser(@PathVariable String id) {
+		return this.gameService.findAllByMj(id);
+	}
+	
+	@GetMapping("players/{id}")
+	public List<Game> getAllByListPlayers(@PathVariable String id) {
+		return this.gameService.findAllByPlayers(id);
+	}
+
+	@PostMapping("addplayer/{gameId}/{newPlayerId}")
+	public Game addNewPlayer(@PathVariable String gameId, @PathVariable String newPlayerId) {
+		return this.gameService.addPlayers(gameId, newPlayerId);
 	}
 	
 	@PostMapping()

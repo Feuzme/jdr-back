@@ -1,5 +1,7 @@
 package fr.jdr.spring.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,21 +14,20 @@ public class Game {
 	@Id
 	private String id;
 	
-	private String nom;
+	private String name;
 	
-	private Integer nb_joueur;
+	private Integer nbPlayers;
 	
-	private String trame;
+	private String story;
 	
-	private String logo;
-	
-	private Boolean is_public;
-	
-	private String status;
+	private Boolean isPublic;
 	
 	@DBRef
-	private User mj_user;
+	private User mjUser;
 	
 	@DBRef
-	private GameType game_type;
+	private GameType gameType;
+	
+	@DBRef
+	private List<User> listPlayers;
 }
