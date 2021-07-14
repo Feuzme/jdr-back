@@ -20,11 +20,7 @@ public class Game {
 	
 	private String story;
 	
-	private String logo;
-	
 	private Boolean isPublic;
-	
-	private String status;
 	
 	@DBRef
 	private User mjUser;
