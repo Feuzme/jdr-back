@@ -1,6 +1,7 @@
 package fr.jdr.spring.models;
 
-import org.springframework.context.annotation.Lazy;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,20 +10,18 @@ import lombok.Data;
 
 @Data
 @Document
-public class Creneau {
+public class ModelSheet {
 	@Id
-	private String id;
-	
-	private String dateDeb;
-	
-	private String dateFin;
-	
-	private boolean prochaineSession;
+	private String id;	
+	private String name;	
+	private Boolean isPublic;
 	
 	@DBRef
 	private User user;
 	
 	@DBRef
-	@Lazy(true)
-	private Game game;
+	private GameType gameType;
+	
+	@DBRef
+	private List<PlugIn> composants;	
 }

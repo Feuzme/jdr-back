@@ -1,5 +1,33 @@
 package fr.jdr.spring.models;
 
-public class Game {
+import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Data;
+
+@Data
+@Document
+public class Game {
+	@Id
+	private String id;
+	
+	private String name;
+	
+	private Integer nbPlayers;
+	
+	private String story;
+	
+	private Boolean isPublic;
+	
+	@DBRef
+	private User mjUser;
+	
+	@DBRef
+	private GameType gameType;
+	
+	@DBRef
+	private List<User> listPlayers;
 }

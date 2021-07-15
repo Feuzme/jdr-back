@@ -9,43 +9,44 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.Session;
+import fr.jdr.spring.models.BasePlugin;
 import fr.jdr.spring.services.GenericService;
 
-@CrossOrigin
 @RestController
-@RequestMapping("sessions")
-public class SessionController {
-	
+@RequestMapping("base_plugins")
+@CrossOrigin
+public class BasePluginController {
+
 	@Autowired
-	private GenericService<Session> sessionService;
+	private GenericService<BasePlugin> basePluginService;
 	
 	@GetMapping()
-	public List<Session> getAll(){
-		return this.sessionService.getAll();
-	}
-	
-	@GetMapping("{id}")
-	public Session getById(@PathVariable String id) {
-		return this.sessionService.getById(id);
+	public List<BasePlugin> getAll() {
+		return this.basePluginService.getAll();
 	}
 	
 	@PostMapping()
-	public Session create(@RequestBody Session session) {
-		return this.sessionService.create(session);
+	public BasePlugin create(@RequestBody BasePlugin entity) {
+		return this.basePluginService.create(entity);
+	}
+	
+	@GetMapping("{id}")
+	public BasePlugin getById(@PathVariable String id) {
+		return this.basePluginService.getById(id);
 	}
 	
 	@PatchMapping()
-	public Session update(@RequestBody Session session) {
-		return this.sessionService.update(session);
+	public BasePlugin update(@RequestBody BasePlugin entity) {
+		return this.basePluginService.update(entity);
 	}
-	
+
 	@DeleteMapping()
-	public void delete(@RequestBody Session session) {
-		this.sessionService.delete(session);
+	public void delete(@RequestBody BasePlugin entity) {
+		this.basePluginService.delete(entity);
 	}
 }

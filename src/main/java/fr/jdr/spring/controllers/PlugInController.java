@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.Session;
+import fr.jdr.spring.models.PlugIn;
 import fr.jdr.spring.services.GenericService;
+import fr.jdr.spring.services.servicesimpl.PlugInServiceImpl;
 
 @CrossOrigin
 @RestController
-@RequestMapping("sessions")
-public class SessionController {
-	
+@RequestMapping("plugins")
+public class PlugInController {
 	@Autowired
-	private GenericService<Session> sessionService;
-	
-	@GetMapping()
-	public List<Session> getAll(){
-		return this.sessionService.getAll();
+	private PlugInServiceImpl service;
+
+	@GetMapping("")
+	public List<PlugIn> getAll() {
+		return service.getAll();
 	}
-	
+
 	@GetMapping("{id}")
-	public Session getById(@PathVariable String id) {
-		return this.sessionService.getById(id);
+	public PlugIn getById(@PathVariable String id) {
+		return service.getById(id);
 	}
-	
-	@PostMapping()
-	public Session create(@RequestBody Session session) {
-		return this.sessionService.create(session);
+
+	@PostMapping("")
+	public PlugIn create(@RequestBody PlugIn entity) {
+		return service.create(entity);
 	}
-	
-	@PatchMapping()
-	public Session update(@RequestBody Session session) {
-		return this.sessionService.update(session);
+
+	@PatchMapping("")
+	public PlugIn update(@RequestBody PlugIn entity) {
+		return service.update(entity);
 	}
-	
-	@DeleteMapping()
-	public void delete(@RequestBody Session session) {
-		this.sessionService.delete(session);
-	}
+
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable String id) {
+		service.delete(id);
+	}	
 }

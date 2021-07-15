@@ -13,39 +13,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.Session;
+import fr.jdr.spring.models.ModelSheet;
 import fr.jdr.spring.services.GenericService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("sessions")
-public class SessionController {
-	
+@RequestMapping("modelsheets")
+public class ModelSheetController {
 	@Autowired
-	private GenericService<Session> sessionService;
+	private GenericService<ModelSheet> service;
 	
-	@GetMapping()
-	public List<Session> getAll(){
-		return this.sessionService.getAll();
+	@GetMapping("")
+	public List<ModelSheet> getAll() {
+		return this.service.getAll();
 	}
 	
 	@GetMapping("{id}")
-	public Session getById(@PathVariable String id) {
-		return this.sessionService.getById(id);
+	public ModelSheet getById(@PathVariable String id) {
+		return this.service.getById(id);
 	}
 	
-	@PostMapping()
-	public Session create(@RequestBody Session session) {
-		return this.sessionService.create(session);
+	@PostMapping("")
+	public ModelSheet create(@RequestBody ModelSheet entity) {
+		return this.service.create(entity);
 	}
 	
-	@PatchMapping()
-	public Session update(@RequestBody Session session) {
-		return this.sessionService.update(session);
+	@PatchMapping("")
+	public ModelSheet update(@RequestBody ModelSheet entity) {
+		return this.service.update(entity);
 	}
 	
-	@DeleteMapping()
-	public void delete(@RequestBody Session session) {
-		this.sessionService.delete(session);
+	@DeleteMapping("")
+	public void delete(@RequestBody ModelSheet entity) {
+		this.service.delete(entity);
 	}
 }

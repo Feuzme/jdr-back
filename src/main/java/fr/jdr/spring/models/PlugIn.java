@@ -1,6 +1,5 @@
 package fr.jdr.spring.models;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,20 +8,13 @@ import lombok.Data;
 
 @Data
 @Document
-public class Creneau {
+public class PlugIn {
 	@Id
 	private String id;
-	
-	private String dateDeb;
-	
-	private String dateFin;
-	
-	private boolean prochaineSession;
-	
+	private String nom;
+	private String auteur;
+	private Boolean origin;
 	@DBRef
-	private User user;
-	
-	@DBRef
-	@Lazy(true)
-	private Game game;
+	private GameType gameType;
+	private Object config;
 }

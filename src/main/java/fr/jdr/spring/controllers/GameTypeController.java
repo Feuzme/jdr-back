@@ -13,39 +13,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.jdr.spring.models.Session;
+import fr.jdr.spring.models.GameType;
 import fr.jdr.spring.services.GenericService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("sessions")
-public class SessionController {
-	
+@RequestMapping("gametypes")
+public class GameTypeController {
 	@Autowired
-	private GenericService<Session> sessionService;
+	private GenericService<GameType> service;
 	
-	@GetMapping()
-	public List<Session> getAll(){
-		return this.sessionService.getAll();
+	@GetMapping("")
+	public List<GameType> getAll(){
+		return this.service.getAll();
+	}
+	
+	@PostMapping("")
+	public GameType save(@RequestBody GameType entity) {
+		return this.service.create(entity);
 	}
 	
 	@GetMapping("{id}")
-	public Session getById(@PathVariable String id) {
-		return this.sessionService.getById(id);
+	public GameType getById(@PathVariable String id) {
+		return this.service.getById(id);
 	}
 	
-	@PostMapping()
-	public Session create(@RequestBody Session session) {
-		return this.sessionService.create(session);
+	@PatchMapping("")
+	public GameType update(@RequestBody GameType entity) {
+		return this.service.update(entity);
 	}
 	
-	@PatchMapping()
-	public Session update(@RequestBody Session session) {
-		return this.sessionService.update(session);
-	}
-	
-	@DeleteMapping()
-	public void delete(@RequestBody Session session) {
-		this.sessionService.delete(session);
+	@DeleteMapping("")
+	public void deleteById(@RequestBody GameType entity) {
+		this.service.delete(entity);
 	}
 }
