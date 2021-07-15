@@ -57,4 +57,11 @@ public class GameServiceImpl implements GenericService<Game> {
 		entity.getListPlayers().add(entityPlayer);
 		return this.gameRepository.save(entity);
 	}
+	
+	public Game deletePlayerFromGame(String gameId, String idNewPlayer) {
+		Game entity = this.getById(gameId);
+		User entityPlayer = userService.findById(idNewPlayer);
+		entity.getListPlayers().remove(entityPlayer);
+		return this.gameRepository.save(entity);
+	}
 }

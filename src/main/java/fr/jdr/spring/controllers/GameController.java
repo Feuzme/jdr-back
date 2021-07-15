@@ -51,6 +51,11 @@ public class GameController {
 		return this.gameService.addPlayers(gameId, newPlayerId);
 	}
 	
+	@PostMapping("deleteplayer/{gameId}/{newPlayerId}")
+	public Game deletePlayerFromGame(@PathVariable String gameId, @PathVariable String newPlayerId) {
+		return this.gameService.deletePlayerFromGame(gameId, newPlayerId);
+	}
+	
 	@PostMapping()
 	public Game create(@RequestBody Game game) {
 		return this.gameService.create(game);
